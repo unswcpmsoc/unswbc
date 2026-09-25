@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unswbc"
+version = "1.0.2"
+description = "Write a bot for UNSW Battlecode, play matches on your machine, watch the replays"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = ["wasmtime>=25"]
+authors = [{ name = "UNSW CPMSoc", email = "hi@battlecode.au" }]
+keywords = ["battlecode", "unsw", "cpmsoc", "contest", "bot"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Education",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Games/Entertainment :: Turn Based Strategy",
+]
+
+[project.urls]
+Homepage = "https://battlecode.au"
+Documentation = "https://game.battlecode.au/docs/quickstart"
+Source = "https://github.com/unswcpmsoc/battlecode"
+
+[project.scripts]
+unswbc = "unswbc.cli:main"
+
+[tool.setuptools]
+packages = ["unswbc"]
+
+[tool.setuptools.package-data]
+unswbc = [
+    "unswbc_engine.wasm",
+    "replay-viewer.vsix",
+    "templates/*/*",
+    "python-metered.wasm",
+    "sandbox-root/**/*",
+    "clang/**/*",
+]

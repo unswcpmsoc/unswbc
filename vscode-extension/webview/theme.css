@@ -1,0 +1,53 @@
+:root {
+    --color-base-100: var(--vscode-input-background, #0b0d10);
+    --color-base-200: var(--vscode-sideBar-background, #15181d);
+    --color-base-300: var(--vscode-button-secondaryBackground, #1c2026);
+    --color-dock: var(--vscode-sideBar-background, #15181d);
+    --color-press: var(--vscode-toolbar-activeBackground, #2a3038);
+
+    --color-ink: var(--vscode-foreground, #eceef1);
+    --color-ink-2: var(--vscode-descriptionForeground, #b4bac4);
+    --color-ink-3: var(--vscode-disabledForeground, #8b93a0);
+
+    --color-rule: var(--vscode-panel-border, #262b33);
+    --color-rule-soft: var(--vscode-widget-border, #1e2229);
+
+    --color-primary: var(--vscode-focusBorder, #5fded2);
+    --color-primary-content: var(--vscode-button-foreground, #0b0d10);
+    --color-secondary: var(--vscode-charts-blue, #a5b4fc);
+
+    --color-dragon: var(--vscode-charts-red, #f0605a);
+    --color-error: var(--vscode-errorForeground, #f0605a);
+    --color-warning: var(--vscode-charts-yellow, #e0b04a);
+    --color-alarm: var(--vscode-charts-orange, #f0863a);
+
+    --font-mono: var(--vscode-editor-font-family, ui-monospace, "SF Mono", Menlo, monospace);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    font-family: var(--vscode-font-family);
+    color: var(--vis-ink);
+    background: var(--vscode-editor-background);
+}
+
+#app {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+}
+
+#app > * {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+}

@@ -1,0 +1,9 @@
+.gitignore
+.vscode/**
+node_modules/**
+src/**
+webview/**
+build.mjs
+vite.config.ts
+tsconfig.json
+pnpm-lock.yaml

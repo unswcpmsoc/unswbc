@@ -1,0 +1,121 @@
+/* Token defaults for the visualiser's chrome.
+
+   The components style themselves against --vis-* names rather than fixed
+   colours, so a host can flip the whole package light or dark by defining the
+   --color-* names below — that redefinition is the entire light theme, there
+   is no second stylesheet. The frontend already defines them, in app.css.
+
+   Each --vis-* token is a var() lookup at the host's matching --color-* name
+   with our value as the fallback. That indirection is deliberate: it is
+   substitution, not cascade competition, so the host always wins when it
+   defines a name, no matter which cascade layer it used or what order the
+   stylesheets load in. Defining these as plain values here would not do that —
+   an unlayered :root rule outranks anything the host puts in @layer theme,
+   which is how Tailwind emits its tokens, so the package would silently
+   override the app's palette.
+
+   Scope: every piece of chrome — the log, team stats, the map editor, skin
+   options, the playback controls, and the tooltip and pinned windows that
+   float over the board. All of it follows the host's theme.
+
+   The board itself does not, and cannot: it is painted into a canvas from a
+   named skin (see visualiser/Skins.ts), so no CSS reaches it. The sea palette
+   is the skin's, and it stays the same in daylight. Chrome that sits directly
+   on the glass therefore has to earn its contrast against a dark board rather
+   than against the page — which is why the tooltip and the pinned windows are
+   opaque plates with a rule, not tinted overlays. */
+
+:where(:root) {
+    /* Plates, back to front: panels, then raised controls on them. */
+    --vis-base-200: var(--color-base-200, #15181d);
+    --vis-base-300: var(--color-base-300, #1c2026);
+
+    /* The recessed one: a slider track, a closed select. It has to read as a
+       hole in the plate, so it points away from the page in both themes —
+       which is a different host token in each, not one token inverted. */
+    --vis-well: var(--color-base-100, #0b0d10);
+
+    --vis-field: var(--color-base-100, #0b0d10);
+    --vis-dock: var(--color-dock, #15181d);
+    --vis-press: var(--color-press, #2a3038);
+
+    /* Cast by things that float: the tooltip, a pinned window. Heavier in the
+       dark, where a shadow is the only thing separating two dark plates. */
+    --vis-shadow: rgba(2, 6, 16, 0.6);
+
+    /* Painted greys, not alphas — nothing in the chrome is see-through. */
+    --vis-ink: var(--color-ink, #eceef1);
+    --vis-ink-2: var(--color-ink-2, #b4bac4);
+    --vis-ink-3: var(--color-ink-3, #8b93a0);
+
+    /* Hairlines: structural edges, then the softer one between rows. */
+    --vis-rule: var(--color-rule, #262b33);
+    --vis-rule-soft: var(--color-rule-soft, #1e2229);
+
+    /* One accent, used only where it means something. */
+    --vis-primary: var(--color-primary, #5fded2);
+    --vis-primary-content: var(--color-primary-content, #0b0d10);
+    /* The second voice: sonar pings, which must not read as the accent. */
+    --vis-secondary: var(--color-secondary, #a5b4fc);
+
+    /* Event colours. The log leans on these to separate a death from a pearl
+       at a glance, so they must stay distinct from the accent and each other. */
+    --vis-dragon: var(--color-dragon, #f0605a);
+    --vis-warning: var(--color-warning, #e0b04a);
+    --vis-alarm: var(--color-alarm, #f0863a);
+    --vis-error: var(--color-error, #f0605a);
+
+    /* Game log, one hue per kind of event. The package's own, so no host
+       lookup; each clears 4.5:1 on base-200 in its theme. */
+    --vis-log-bot: #60a5fa;
+    --vis-log-split: #4ade80;
+    --vis-log-death: #ff6b6b;
+    --vis-log-pearl: #facc15;
+    --vis-log-sonar: #c084fc;
+    --vis-log-engine: #f472b6;
+
+    --vis-text-label: var(--text-label, 0.6875rem);
+    --vis-text-meta: var(--text-meta, 0.75rem);
+    --vis-text-body: var(--text-body, 0.875rem);
+
+    --vis-radius-field: var(--radius-field, 0.25rem);
+    --vis-radius-box: var(--radius-box, 0.375rem);
+
+    --vis-font-mono: var(--font-mono, ui-monospace, "SF Mono", Menlo, monospace);
+}
+
+/* Daylight, for a host that sets the theme attribute but defines no tokens of
+   its own. Only the fallbacks change: a host that defines --color-* still wins
+   above, and themes the package through its own light palette. */
+:where(:root[data-theme="battlecode-light"]) {
+    --vis-base-200: var(--color-base-200, #f4f6f9);
+    --vis-base-300: var(--color-base-300, #e9edf2);
+    --vis-well: var(--color-base-300, #e9edf2);
+    --vis-field: var(--color-base-100, #ffffff);
+    --vis-dock: var(--color-dock, #f4f6f9);
+    --vis-press: var(--color-press, #dde3ea);
+    --vis-shadow: rgba(15, 28, 46, 0.18);
+
+    --vis-ink: var(--color-ink, #0f1c2e);
+    --vis-ink-2: var(--color-ink-2, #3d4d61);
+    --vis-ink-3: var(--color-ink-3, #5b6b80);
+
+    --vis-rule: var(--color-rule, #d5dbe3);
+    --vis-rule-soft: var(--color-rule-soft, #e6eaef);
+
+    --vis-primary: var(--color-primary, #1a63d2);
+    --vis-primary-content: var(--color-primary-content, #ffffff);
+    --vis-secondary: var(--color-secondary, #1e3a8a);
+
+    --vis-dragon: var(--color-dragon, #b91c1c);
+    --vis-warning: var(--color-warning, #8f5606);
+    --vis-alarm: var(--color-alarm, #b83b0a);
+    --vis-error: var(--color-error, #b91c1c);
+
+    --vis-log-bot: #1d4ed8;
+    --vis-log-split: #15803d;
+    --vis-log-death: #c62828;
+    --vis-log-pearl: #a16207;
+    --vis-log-sonar: #7e22ce;
+    --vis-log-engine: #be185d;
+}

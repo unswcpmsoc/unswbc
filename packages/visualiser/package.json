@@ -1,0 +1,13 @@
+{
+    "name": "@battledragon/visualiser",
+    "version": "0.1.0",
+    "type": "module",
+    "private": true,
+    "exports": { ".": "./src/index.ts" },
+    "peerDependencies": { "svelte": "^5.0.0" },
+    "dependencies": {
+        "@lucide/svelte": "^1.47.0",
+        "capnp-es": "^0.0.16"
+    },
+    "devDependencies": { "prettier": "^3.3.3", "typescript": "^5.6.2" }
+}

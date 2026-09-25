@@ -1,0 +1,15 @@
+.build
+build
+.cache
+compile_commands.json
+examples/*/main.wasm
+.claude
+/build
+.repro
+/repro
+__pycache__/
+*.replay
+.venv
+*.egg-info/
+/pythoncli/dist/
+/pythoncli/unswbc/templates/maps/
