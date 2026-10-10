@@ -1,0 +1,4 @@
+node_modules
+
+# Scratch dir used while regenerating the replay bindings.
+/.capnp-gen-tmp

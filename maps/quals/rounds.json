@@ -1,0 +1,8 @@
+{
+    "r2": ["ezam", "atlantis", "ouroboros", "athena", "whale_song", "thermopylae", "troll_australia"],
+    "r4": ["caution", "atlantis", "metro", "hive", "detention", "maelstrom", "trolley_problem"],
+    "r8": ["ezam", "metro", "ouroboros", "hive", "whale_song", "maelstrom", "thermopylae"],
+    "r16": ["caution", "atlantis", "ouroboros", "athena", "detention", "troll_australia", "trolley_problem"],
+    "r32": ["ezam", "atlantis", "metro", "detention", "whale_song", "thermopylae", "troll_australia"],
+    "default": ["caution", "metro", "ouroboros", "hive", "athena", "maelstrom", "trolley_problem"]
+}

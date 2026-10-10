@@ -1,0 +1,9 @@
+{
+    "tasks": {
+        "replay:bindings": "deno run -A scripts/generate-replay-bindings.ts",
+        "test": "deno test -A --sloppy-imports"
+    },
+    "compilerOptions": {
+        "noImplicitOverride": false
+    }
+}
